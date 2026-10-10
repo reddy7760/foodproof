@@ -1,0 +1,124 @@
+type AuthPayload {
+  user: User!
+}
+
+type CloudinarySignature {
+  signature: String!
+  timestamp: Int!
+  apiKey: String!
+  cloudName: String!
+  folder: String!
+}
+
+"""Date with time (isoformat)"""
+scalar DateTime
+
+type Dish {
+  id: Int!
+  name: String!
+  category: String
+  avgRating: Float!
+  avgPrice: Float
+  createdAt: DateTime!
+}
+
+type Mutation {
+  signup(name: String!, email: String!, password: String!, phone: String = null): AuthPayload!
+  login(email: String!, password: String!): AuthPayload!
+  logout: Boolean!
+  createReview(restaurantId: Int!, rating: Int!, dishId: Int = null, reviewText: String = null, pricePaid: Float = null, photoUrl: String = null): Review!
+  attachReviewPhoto(reviewId: Int!, photoUrl: String!): ReviewPhoto!
+  approveReview(reviewId: Int!): Review!
+  rejectReview(reviewId: Int!): Review!
+  voteHelpful(reviewId: Int!): Review!
+  redeemReward(rewardId: Int!): Redemption!
+}
+
+type PointsLedgerEntry {
+  id: Int!
+  points: Int!
+  reason: String!
+  reviewId: Int
+  createdAt: DateTime!
+}
+
+type Query {
+  me: User
+  cloudinaryUploadSignature: CloudinarySignature!
+  restaurants(city: String = null, search: String = null): [Restaurant!]!
+  restaurant(id: Int!): Restaurant
+  dish(id: Int!): Dish
+  myPointsBalance: Int!
+  myPointsHistory: [PointsLedgerEntry!]!
+  pendingReviews: [Review!]!
+  rewards: [Reward!]!
+  myRedemptions: [Redemption!]!
+}
+
+type Redemption {
+  id: Int!
+  rewardId: Int!
+  rewardTitle: String!
+  pointsSpent: Int!
+  redeemedAt: DateTime!
+  status: String!
+}
+
+type Restaurant {
+  id: Int!
+  name: String!
+  city: String!
+  address: String
+  lat: Float
+  lng: Float
+  priceRange: Int
+  avgRating: Float!
+  createdAt: DateTime!
+  dishes: [Dish!]!
+  reviews: [Review!]!
+}
+
+type Review {
+  id: Int!
+  userId: Int!
+  restaurantId: Int!
+  dishId: Int
+  rating: Int!
+  reviewText: String
+  pricePaid: Float
+  status: String!
+  isVerifiedVisit: Boolean!
+  createdAt: DateTime!
+  photos: [ReviewPhoto!]!
+  helpfulCount: Int!
+  hasVotedHelpful: Boolean!
+  userName: String!
+  userEmail: String!
+  restaurantName: String!
+  dishName: String
+}
+
+type ReviewPhoto {
+  id: Int!
+  reviewId: Int!
+  photoUrl: String!
+  moderationStatus: String!
+}
+
+type Reward {
+  id: Int!
+  title: String!
+  pointsCost: Int!
+  stock: Int!
+  restaurantId: Int
+  restaurantName: String
+}
+
+type User {
+  id: Int!
+  name: String!
+  email: String!
+  phone: String
+  isAdmin: Boolean!
+  createdAt: DateTime!
+}

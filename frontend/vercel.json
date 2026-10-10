@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/graphql", "destination": "https://REPLACE-WITH-YOUR-RENDER-URL.onrender.com/graphql" }
+  ]
+}

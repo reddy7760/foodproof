@@ -1,0 +1,539 @@
+:root {
+  color-scheme: light;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #faf7f2;
+  color: #2a2320;
+}
+
+.app {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+}
+
+.app__header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.app__header h1 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.app__header p {
+  margin: 0.25rem 0 1.5rem;
+  color: #6b5f56;
+}
+
+.app__header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.app__nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 0.4rem;
+}
+
+.app__nav a {
+  color: #7a4a1e;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.app__nav a:hover {
+  text-decoration: underline;
+}
+
+.app__nav-user {
+  color: #6b5f56;
+  font-size: 0.9rem;
+}
+
+.app__nav-points {
+  background: #f1ebe1;
+  color: #7a4a1e;
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+}
+
+.app__nav button {
+  background: #fff;
+  color: #4a4038;
+  border: 1px solid #d8cfc3;
+  border-radius: 8px;
+  padding: 0.4rem 0.7rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.app__nav button:hover {
+  background: #f1ebe1;
+}
+
+.filters {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.filters input {
+  flex: 1;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #d8cfc3;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background: #fff;
+  color: #2a2320;
+}
+
+.status {
+  color: #6b5f56;
+}
+
+.status--error {
+  color: #b3261e;
+}
+
+.restaurant-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.restaurant-card {
+  background: #fff;
+  border: 1px solid #ece4d8;
+  border-radius: 12px;
+  padding: 1.1rem 1.3rem;
+}
+
+.restaurant-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+.restaurant-card__header h2 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.restaurant-card__rating {
+  font-size: 0.9rem;
+  color: #b3791b;
+  white-space: nowrap;
+}
+
+.restaurant-card__meta {
+  margin: 0.2rem 0 0.8rem;
+  color: #6b5f56;
+  font-size: 0.9rem;
+}
+
+.dish-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.dish-list__item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.92rem;
+  padding: 0.35rem 0;
+  border-top: 1px solid #f1ebe1;
+}
+
+.dish-list__item:first-child {
+  border-top: none;
+}
+
+.dish-list__name {
+  font-weight: 600;
+}
+
+.dish-list__category {
+  color: #8a7d70;
+  font-size: 0.82rem;
+}
+
+.dish-list__price {
+  margin-left: auto;
+  color: #4a4038;
+  font-size: 0.85rem;
+}
+
+.review-list {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0.9rem 0 0;
+  border-top: 1px solid #f1ebe1;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.review-list__item {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.review-list__header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  font-size: 0.88rem;
+}
+
+.review-list__rating {
+  color: #b3791b;
+}
+
+.review-list__author {
+  font-weight: 600;
+}
+
+.review-list__dish {
+  color: #8a7d70;
+}
+
+.review-list__text {
+  margin: 0;
+  font-size: 0.92rem;
+  color: #3a322c;
+}
+
+.review-list__photos {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.review-list__photos img {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #ece4d8;
+}
+
+.review-list__helpful {
+  justify-self: start;
+  background: none;
+  border: 1px solid #d8cfc3;
+  border-radius: 999px;
+  padding: 0.25rem 0.7rem;
+  font-size: 0.8rem;
+  color: #6b5f56;
+  cursor: pointer;
+}
+
+.review-list__helpful--active {
+  background: #f1ebe1;
+  color: #7a4a1e;
+  border-color: #d8cfc3;
+}
+
+.review-list__helpful--static {
+  border: none;
+  padding: 0;
+  color: #8a7d70;
+  cursor: default;
+}
+
+.review-list__helpful:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.auth-page,
+.review-page {
+  max-width: 420px;
+}
+
+.review-page {
+  max-width: 480px;
+}
+
+.auth-page form,
+.review-page form {
+  display: grid;
+  gap: 1rem;
+}
+
+.auth-page label,
+.review-page label {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+  color: #4a4038;
+}
+
+.auth-page input,
+.review-page input,
+.review-page select,
+.review-page textarea {
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #d8cfc3;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  background: #fff;
+  color: #2a2320;
+}
+
+.auth-page button,
+.review-page button {
+  justify-self: start;
+  background: #7a4a1e;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.65rem 1.2rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.auth-page button:disabled,
+.review-page button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.field-error {
+  color: #b3261e;
+  font-size: 0.82rem;
+}
+
+.rating-input {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+  color: #4a4038;
+}
+
+.rating-input__stars {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.star {
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: #d8cfc3;
+  cursor: pointer;
+  padding: 0;
+}
+
+.star--filled {
+  color: #b3791b;
+}
+
+.review-page__preview {
+  max-width: 200px;
+  border-radius: 8px;
+  border: 1px solid #ece4d8;
+}
+
+.admin-page {
+  max-width: 680px;
+}
+
+.admin-queue {
+  display: grid;
+  gap: 1rem;
+}
+
+.admin-card {
+  background: #fff;
+  border: 1px solid #ece4d8;
+  border-radius: 12px;
+  padding: 1.1rem 1.3rem;
+}
+
+.admin-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+.admin-card__rating {
+  color: #b3791b;
+  white-space: nowrap;
+}
+
+.admin-card__meta {
+  margin: 0.2rem 0 0.6rem;
+  color: #6b5f56;
+  font-size: 0.85rem;
+}
+
+.admin-card__text {
+  margin: 0 0 0.8rem;
+}
+
+.admin-card__photos {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.8rem;
+}
+
+.admin-card__photo {
+  margin: 0;
+  text-align: center;
+}
+
+.admin-card__photo img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #ece4d8;
+  display: block;
+}
+
+.admin-card__photo figcaption {
+  font-size: 0.75rem;
+  color: #8a7d70;
+  margin-top: 0.2rem;
+}
+
+.admin-card__actions {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.admin-card__actions button {
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.admin-card__actions button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.admin-card__approve {
+  background: #2f7a4d;
+  color: #fff;
+}
+
+.admin-card__reject {
+  background: #fff;
+  color: #b3261e;
+  border: 1px solid #e3b3ae !important;
+}
+
+.rewards-page {
+  max-width: 760px;
+}
+
+.rewards-page__balance {
+  display: inline-block;
+  background: #f1ebe1;
+  color: #7a4a1e;
+  font-weight: 600;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  margin: 0 0 1.5rem;
+}
+
+.rewards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.reward-card {
+  background: #fff;
+  border: 1px solid #ece4d8;
+  border-radius: 12px;
+  padding: 1.1rem 1.3rem;
+  display: grid;
+  gap: 0.3rem;
+}
+
+.reward-card h3 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.reward-card__meta {
+  margin: 0;
+  color: #6b5f56;
+  font-size: 0.85rem;
+}
+
+.reward-card__stock {
+  margin: 0 0 0.4rem;
+  color: #8a7d70;
+  font-size: 0.8rem;
+}
+
+.reward-card button {
+  justify-self: start;
+  background: #7a4a1e;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-size: 0.88rem;
+  cursor: pointer;
+}
+
+.reward-card button:disabled {
+  background: #d8cfc3;
+  cursor: not-allowed;
+}
+
+.redemption-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.redemption-list__item {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  background: #fff;
+  border: 1px solid #ece4d8;
+  border-radius: 10px;
+  padding: 0.7rem 1rem;
+  font-size: 0.9rem;
+}
+
+.redemption-list__title {
+  font-weight: 600;
+}
+
+.redemption-list__meta {
+  color: #6b5f56;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
