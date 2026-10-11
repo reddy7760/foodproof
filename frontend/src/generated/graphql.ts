@@ -224,6 +224,11 @@ export type RestaurantsQueryVariables = Exact<{
 
 export type RestaurantsQuery = { __typename?: 'Query', restaurants: Array<{ __typename?: 'Restaurant', id: number, name: string, city: string, address?: string | null, priceRange?: number | null, avgRating: number, dishes: Array<{ __typename?: 'Dish', id: number, name: string, category?: string | null, avgRating: number, avgPrice?: number | null }>, reviews: Array<{ __typename?: 'Review', id: number, userId: number, userName: string, dishName?: string | null, rating: number, reviewText?: string | null, createdAt: string, helpfulCount: number, hasVotedHelpful: boolean, photos: Array<{ __typename?: 'ReviewPhoto', id: number, photoUrl: string }> }> }> };
 
+export type RestaurantFilterOptionsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type RestaurantFilterOptionsQuery = { __typename?: 'Query', restaurants: Array<{ __typename?: 'Restaurant', id: number, name: string, city: string, address?: string | null }> };
+
 export type VoteHelpfulMutationVariables = Exact<{
   reviewId: Scalars['Int']['input'];
 }>;

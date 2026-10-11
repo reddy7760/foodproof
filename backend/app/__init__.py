@@ -37,6 +37,20 @@ def create_app(config_class: type = Config) -> Flask:
 
         run_seed_rewards()
 
+    @app.cli.command("sync-dishes")
+    def sync_dishes_command():
+        """Bring an already-seeded DB's dish catalog/categories up to date, non-destructively."""
+        from app.seed import sync_dish_catalog
+
+        sync_dish_catalog()
+
+    @app.cli.command("sync-restaurant-details")
+    def sync_restaurant_details_command():
+        """Bring an already-seeded DB's restaurant fields (e.g. address) up to date, non-destructively."""
+        from app.seed import sync_restaurant_details
+
+        sync_restaurant_details()
+
     @app.cli.command("export-schema")
     def export_schema_command():
         """Print the GraphQL SDL, for the frontend's codegen to consume."""

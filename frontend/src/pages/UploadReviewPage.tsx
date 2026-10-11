@@ -14,6 +14,7 @@ import type {
   CreateReviewMutationVariables,
   RestaurantsForReviewQuery,
 } from "../generated/graphql";
+import { SearchableDropdown } from "../SearchableDropdown";
 
 const emptyToUndefined = (val: unknown) => (val === "" ? undefined : val);
 
@@ -55,6 +56,9 @@ export default function UploadReviewPage() {
   const restaurants = restaurantsData?.restaurants ?? [];
   const selectedRestaurantId = watch("restaurantId");
   const dishes = restaurants.find((r) => r.id === Number(selectedRestaurantId))?.dishes ?? [];
+
+  const restaurantOptions = restaurants.map((r) => ({ value: String(r.id), label: r.name }));
+  const dishOptions = dishes.map((d) => ({ value: String(d.id), label: d.name }));
 
   useEffect(() => {
     setValue("dishId", undefined);
@@ -138,29 +142,38 @@ export default function UploadReviewPage() {
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
         <label>
           Restaurant
-          <select {...register("restaurantId")} defaultValue="">
-            <option value="" disabled>
-              Select a restaurant
-            </option>
-            {restaurants.map((r) => (
-              <option key={r.id} value={r.id}>
-                {r.name}
-              </option>
-            ))}
-          </select>
+          <Controller
+            name="restaurantId"
+            control={control}
+            render={({ field }) => (
+              <SearchableDropdown
+                inputId="restaurant-select"
+                options={restaurantOptions}
+                value={field.value != null ? String(field.value) : undefined}
+                onChange={field.onChange}
+                placeholder="Select a restaurant"
+              />
+            )}
+          />
           {errors.restaurantId && <span className="field-error">{errors.restaurantId.message}</span>}
         </label>
 
         <label>
           Dish (optional)
-          <select {...register("dishId")} defaultValue="">
-            <option value="">Restaurant-level review</option>
-            {dishes.map((d) => (
-              <option key={d.id} value={d.id}>
-                {d.name}
-              </option>
-            ))}
-          </select>
+          <Controller
+            name="dishId"
+            control={control}
+            render={({ field }) => (
+              <SearchableDropdown
+                inputId="dish-select"
+                options={dishOptions}
+                value={field.value != null ? String(field.value) : undefined}
+                onChange={field.onChange}
+                placeholder="Restaurant-level review"
+                isDisabled={!selectedRestaurantId}
+              />
+            )}
+          />
         </label>
 
         <Controller

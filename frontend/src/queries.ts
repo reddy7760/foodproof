@@ -35,6 +35,17 @@ export const RESTAURANTS_QUERY = gql`
   }
 `;
 
+export const RESTAURANT_FILTER_OPTIONS_QUERY = gql`
+  query RestaurantFilterOptions {
+    restaurants {
+      id
+      name
+      city
+      address
+    }
+  }
+`;
+
 export const VOTE_HELPFUL_MUTATION = gql`
   mutation VoteHelpful($reviewId: Int!) {
     voteHelpful(reviewId: $reviewId) {
